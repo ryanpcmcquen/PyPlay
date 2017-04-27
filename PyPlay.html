@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>PyPlay</title>
+  <style>
+    #editor {
+      position: relative;
+      border: 1px solid grey;
+    }
+
+    #console {
+      margin-left: 20px;
+      margin-top: 20px;
+      border: 1px solid grey;
+    }
+
+    #run {
+      margin-left: 20px;
+    }
+
+    #filename {
+      margin-left: 20px;
+    }
+
+    #container .wrapper {
+      float: left;
+    }
+
+    #python {
+      display: none;
+    }
+  </style>
+  <script src="assets/ace.js"></script>
+  <script src="assets/brython.js"></script>
+  <script src="assets/brython_stdlib.js"></script>
+
+  <script src="PyPlay.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="wrapper">
+      <div id="editor"></div>
+    </div>
+    <div class="wrapper">
+      <button id="run">Run</button><br>
+      <input id="filename" type="text" value="foo.py">
+      <button id="download">Download</button>
+      <div id="python"></div>
+      <div id="console"></div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
