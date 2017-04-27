@@ -23,12 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
       '<script type="text/python">' + editor.getValue() + '</script>'
     outputNode.innerHTML = ''
     window.console.log = (message) => {
-      if (typeof message === 'object') {
-        outputNode.innerHTML += (JSON && JSON.stringify ? JSON.stringify(
-          message) : message) + '<br />'
-      } else {
-        outputNode.innerHTML += message + '<br />'
-      }
+      outputNode.innerHTML += message + '<br>'
     }
     brython()
   })
