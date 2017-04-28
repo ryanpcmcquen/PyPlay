@@ -1,6 +1,8 @@
 # PyPlay
 An offline Python 3 REPL for the web.
 
+![Demo](https://usercontent.irccloud-cdn.com/file/P1S4xNTI/Apr%2027%202017%207-27%20PM%20-%20Edited.gif)
+
 Download the [latest release](https://github.com/ryanpcmcquen/PyPlay/releases) and open `index.html` in your favorite browser.
 
 Keybindings:
