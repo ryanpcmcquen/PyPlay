@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
   outputNode.style.width = `${(window.innerWidth / 2.1)}px`
   outputNode.style.height = `${(window.innerHeight) - 88}px`
 
-  runNode.style.width = `${(window.innerWidth / 2.2)}px`
-  downloadNode.style.width = `${(window.innerWidth / 2.6)}px`
+  runNode.style.width = `${(window.innerWidth / 2.4)}px`
+  downloadNode.style.width = `${(window.innerWidth / 3.75)}px`
 
   runNode.addEventListener('click', () => {
     pythonNode.innerHTML =
