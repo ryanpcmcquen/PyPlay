@@ -10,10 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const downloadNode = document.querySelector('#download')
   const filenameNode = document.querySelector('#filename')
 
-  editorNode.style.width = `${(window.innerWidth / 1.1)}px`
+  editorNode.style.width = `${(window.innerWidth / 1.05)}px`
   editorNode.style.height = `${(window.innerHeight) / 1.5}px`
 
-  outputNode.style.width = `${(window.innerWidth / 1.1)}px`
+  outputNode.style.width = `${(window.innerWidth / 1.05)}px`
   outputNode.style.height = `${(window.innerHeight) / 4}px`
 
   runNode.style.width = `${(window.innerWidth / 4)}px`
