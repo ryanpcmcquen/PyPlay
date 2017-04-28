@@ -23,8 +23,12 @@
       margin-left: 20px;
     }
 
-    #container .wrapper {
+    .left {
       float: left;
+    }
+
+    .right {
+      float: right;
     }
 
     #python {
@@ -40,10 +44,10 @@
 
 <body>
   <div id="container">
-    <div class="wrapper">
+    <div class="wrapper left">
       <div id="editor"></div>
     </div>
-    <div class="wrapper">
+    <div class="wrapper right">
       <button id="run">Run</button><br>
       <input id="filename" type="text" value="foo.py">
       <button id="download">Download</button>
