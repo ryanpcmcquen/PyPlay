@@ -25,6 +25,57 @@
       margin-right: 5px;
       float: left;
     }
+
+    input {
+      font-size: 16px;
+      padding: 10px 10px 10px 5px;
+      display: block;
+      width: 200px;
+      border: none;
+      border-bottom: 1px solid #757575;
+      margin-bottom: 5px;
+      margin-top: -8px;
+    }
+
+    input:focus {
+      outline: none;
+    }
+
+    .btn {
+      border-radius: 5px;
+      border: none;
+      padding: 5px;
+      margin-bottom: 10px;
+      font-family: Monospace;
+      font-size: 16px;
+      text-decoration: none;
+      color: #ffffff;
+      position: relative;
+      display: inline-block;
+    }
+
+    .btn:active {
+      transform: translate(0px, 5px);
+      box-shadow: 0px 1px 0px 0px;
+    }
+
+    .blue {
+      background-color: #55acee;
+      box-shadow: 0px 5px 0px 0px #3C93D5;
+    }
+
+    .blue:hover {
+      background-color: #6FC6FF;
+    }
+
+    .green {
+      background-color: #2ecc71;
+      box-shadow: 0px 5px 0px 0px #15B358;
+    }
+
+    .green:hover {
+      background-color: #48E68B;
+    }
   </style>
   <script src="assets/ace.js"></script>
   <script src="assets/brython.js"></script>
@@ -38,9 +89,9 @@
   <div id="container">
     <div id="editor"></div>
     <div class="wrapper">
-      <button id="run">Run</button>
+      <button id="run" class="btn blue">Run</button>
       <input id="filename" type="text" value="foo.py">
-      <button id="download">Download</button>
+      <button id="download" class="btn green">Download</button>
     </div>
     <div id="python"></div>
     <div id="console"></div>
