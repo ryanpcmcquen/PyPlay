@@ -3,81 +3,9 @@
 
 <head>
   <title>PyPlay</title>
-  <style>
-    #editor {
-      position: relative;
-      border: 1px solid grey;
-      margin-bottom: 5px;
-    }
-
-    #console {
-      margin-top: 30px;
-      border: 1px solid grey;
-      overflow: scroll;
-    }
-
-    #python {
-      display: none;
-    }
-
-    .wrapper button,
-    .wrapper input {
-      margin-right: 5px;
-      float: left;
-    }
-
-    input {
-      font-size: 16px;
-      padding: 10px 10px 10px 5px;
-      display: block;
-      width: 200px;
-      border: none;
-      border-bottom: 1px solid #757575;
-      margin-bottom: 5px;
-      margin-top: -8px;
-    }
-
-    input:focus {
-      outline: none;
-    }
-
-    .btn {
-      border-radius: 5px;
-      border: none;
-      padding: 5px;
-      margin-bottom: 10px;
-      font-family: Monospace;
-      font-size: 16px;
-      text-decoration: none;
-      color: #ffffff;
-      position: relative;
-      display: inline-block;
-    }
-
-    .btn:active {
-      transform: translate(0px, 5px);
-      box-shadow: 0px 1px 0px 0px;
-    }
-
-    .blue {
-      background-color: #55acee;
-      box-shadow: 0px 5px 0px 0px #3C93D5;
-    }
-
-    .blue:hover {
-      background-color: #6FC6FF;
-    }
-
-    .green {
-      background-color: #2ecc71;
-      box-shadow: 0px 5px 0px 0px #15B358;
-    }
-
-    .green:hover {
-      background-color: #48E68B;
-    }
-  </style>
+  <link href="style.css" rel="stylesheet">
   <script src="assets/ace.js"></script>
+  <script src="assets/ext-language_tools.js"></script>
   <script src="assets/brython.js"></script>
   <script src="assets/brython_stdlib.js"></script>
 

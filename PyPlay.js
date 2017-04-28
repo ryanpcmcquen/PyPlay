@@ -2,6 +2,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   const editor = ace.edit('editor')
   editor.session.setMode('ace/mode/python')
+  ace.require('ace/ext/language_tools')
+  editor.setOptions({
+    enableBasicAutocompletion: true,
+    enableLiveAutocompletion: true
+  })
 
   const editorNode = document.querySelector('#editor')
   const outputNode = document.querySelector('#console')
@@ -32,7 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const download = () => {
     const element = document.createElement('a')
     element.setAttribute('href',
-      `data:text/python;charset=utf-8,${encodeURIComponent(editor.getValue())}`)
+      `data:text/python;charset=utf-8,${encodeURIComponent(editor.getValue())}`
+    )
     element.setAttribute('download', filenameNode.value)
     element.style.display = 'none'
     document.body.appendChild(element)
@@ -54,8 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
       mac: 'Command-S'
     },
     exec: download
-  }
-  ])
+  }])
 
   runNode.addEventListener('click', () => {
     run()
@@ -64,4 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
   downloadNode.addEventListener('click', () => {
     download()
   })
+
+  editor.focus()
 })
