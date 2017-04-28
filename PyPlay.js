@@ -8,17 +8,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const runNode = document.querySelector('#run')
   const pythonNode = document.querySelector('#python')
   const downloadNode = document.querySelector('#download')
+  const filenameNode = document.querySelector('#filename')
 
-  editorNode.style.width = `${(window.innerWidth / 2.1)}px`
-  editorNode.style.height = `${(window.innerHeight) - 30}px`
+  editorNode.style.width = `${(window.innerWidth / 1.1)}px`
+  editorNode.style.height = `${(window.innerHeight) / 1.5}px`
 
-  outputNode.style.width = `${(window.innerWidth / 2.1)}px`
-  outputNode.style.height = `${(window.innerHeight) - 88}px`
+  outputNode.style.width = `${(window.innerWidth / 1.1)}px`
+  outputNode.style.height = `${(window.innerHeight) / 4}px`
 
-  runNode.style.width = `${(window.innerWidth / 2.4)}px`
-  downloadNode.style.width = `${(window.innerWidth / 3.75)}px`
+  runNode.style.width = `${(window.innerWidth / 4)}px`
+  downloadNode.style.width = `${(window.innerWidth / 4)}px`
 
-  runNode.addEventListener('click', () => {
+  const run = () => {
     pythonNode.innerHTML =
       '<script type="text/python">' + editor.getValue() + '</script>'
     outputNode.innerHTML = ''
@@ -26,20 +27,41 @@ document.addEventListener('DOMContentLoaded', () => {
       outputNode.innerHTML += message + '<br>'
     }
     brython()
-  })
+  }
 
-  const download = (filename, text) => {
+  const download = () => {
     const element = document.createElement('a')
     element.setAttribute('href',
-      `data:text/python;charset=utf-8,${encodeURIComponent(text)}`)
-    element.setAttribute('download', filename)
+      `data:text/python;charset=utf-8,${encodeURIComponent(editor.getValue())}`)
+    element.setAttribute('download', filenameNode.value)
     element.style.display = 'none'
     document.body.appendChild(element)
     element.click()
     document.body.removeChild(element)
   }
 
+  editor.commands.addCommands([{
+    name: 'run',
+    bindKey: {
+      win: 'Ctrl-Enter',
+      mac: 'Command-Enter'
+    },
+    exec: run
+  }, {
+    name: 'download',
+    bindKey: {
+      win: 'Ctrl-S',
+      mac: 'Command-S'
+    },
+    exec: download
+  }
+  ])
+
+  runNode.addEventListener('click', () => {
+    run()
+  })
+
   downloadNode.addEventListener('click', () => {
-    download(document.querySelector('#filename').value, editor.getValue())
+    download()
   })
 })
