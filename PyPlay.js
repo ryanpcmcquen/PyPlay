@@ -26,12 +26,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const run = () => {
         pythonNode.innerHTML =
-            '<script type="text/python">' + editor.getValue() + "</script>"
+            `<script type="text/python">${editor.getValue()}</script>`
         outputNode.innerHTML = ""
-        window.console.log = message => {
-            outputNode.innerHTML += message + "<br>"
-        }
         brython()
+        window.console.log = message => {
+            outputNode.innerHTML += `${message}<br>`
+        }
     }
 
     const download = () => {
