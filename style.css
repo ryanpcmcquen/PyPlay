@@ -47,6 +47,7 @@ input:focus {
     color: #ffffff;
     position: relative;
     display: inline-block;
+    cursor: pointer;
 }
 
 .btn:active {
