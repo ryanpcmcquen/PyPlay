@@ -1,34 +1,32 @@
 /* global ace, brython */
-document.addEventListener('DOMContentLoaded', () => {
-    const editor = ace.edit('editor');
-    editor.session.setMode('ace/mode/python');
-    ace.require('ace/ext/language_tools');
-	editor.setShowPrintMargin(false);
+document.addEventListener("DOMContentLoaded", () => {
+    const editor = ace.edit("editor");
+    editor.session.setMode("ace/mode/python");
+    ace.require("ace/ext/language_tools");
+    editor.setShowPrintMargin(false);
     editor.setOptions({
         enableBasicAutocompletion: true,
-        enableLiveAutocompletion: true
+        enableLiveAutocompletion: true,
     });
-	
-$('#clipboard').on('click', function() {
-  var sel = editor.selection.toJSON(); // save selection
-  editor.selectAll();
-  editor.focus();
-  document.execCommand('copy');
-  editor.selection.fromJSON(sel); // restore selection
-});
 
-$('#clear').on('click', function() {
-editor.setValue("");
-});
+    $("#clipboard").on("click", function () {
+        var sel = editor.selection.toJSON(); // save selection
+        editor.selectAll();
+        editor.focus();
+        document.execCommand("copy");
+        editor.selection.fromJSON(sel); // restore selection
+    });
 
+    $("#clear").on("click", function () {
+        editor.setValue("");
+    });
 
-
-    const editorNode = document.querySelector('#editor');
-    const outputNode = document.querySelector('#console');
-    const runNode = document.querySelector('#run');
-	const pythonNode = document.querySelector('#python');
-    const downloadNode = document.querySelector('#download');
-    const filenameNode = document.querySelector('#filename');
+    const editorNode = document.querySelector("#editor");
+    const outputNode = document.querySelector("#console");
+    const runNode = document.querySelector("#run");
+    const pythonNode = document.querySelector("#python");
+    const downloadNode = document.querySelector("#download");
+    const filenameNode = document.querySelector("#filename");
 
     editorNode.style.width = `${window.innerWidth / 1.05}px`;
     editorNode.style.height = `${window.innerHeight / 1.5}px`;
@@ -41,7 +39,7 @@ editor.setValue("");
 
     const run = () => {
         pythonNode.innerHTML = `<script type="text/python">${editor.getValue()}</script>`;
-        outputNode.innerHTML = '';
+        outputNode.innerHTML = "";
         brython();
         window.console.log = (message) => {
             outputNode.innerHTML += `${message}<br>`;
@@ -49,15 +47,15 @@ editor.setValue("");
     };
 
     const download = () => {
-        const element = document.createElement('a');
+        const element = document.createElement("a");
         element.setAttribute(
-            'href',
+            "href",
             `data:text/python;charset=utf-8,${encodeURIComponent(
                 editor.getValue()
             )}`
         );
-        element.setAttribute('download', filenameNode.value);
-        element.style.display = 'none';
+        element.setAttribute("download", filenameNode.value);
+        element.style.display = "none";
         document.body.appendChild(element);
         element.click();
         document.body.removeChild(element);
@@ -65,45 +63,30 @@ editor.setValue("");
 
     editor.commands.addCommands([
         {
-            name: 'run',
+            name: "run",
             bindKey: {
-                win: 'Ctrl-Enter',
-                mac: 'Command-Enter'
+                win: "Ctrl-Enter",
+                mac: "Command-Enter",
             },
-            exec: run
+            exec: run,
         },
         {
-            name: 'download',
+            name: "download",
             bindKey: {
-                win: 'Ctrl-S',
-                mac: 'Command-S'
+                win: "Ctrl-S",
+                mac: "Command-S",
             },
-            exec: download
-        }
+            exec: download,
+        },
     ]);
 
-    runNode.addEventListener('click', () => {
+    runNode.addEventListener("click", () => {
         run();
     });
-	
 
-    downloadNode.addEventListener('click', () => {
+    downloadNode.addEventListener("click", () => {
         download();
     });
 
     editor.focus();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
