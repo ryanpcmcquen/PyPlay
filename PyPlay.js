@@ -3,15 +3,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const editor = ace.edit('editor');
     editor.session.setMode('ace/mode/python');
     ace.require('ace/ext/language_tools');
+	editor.setShowPrintMargin(false);
     editor.setOptions({
         enableBasicAutocompletion: true,
         enableLiveAutocompletion: true
     });
+	
+$('#clipboard').on('click', function() {
+  var sel = editor.selection.toJSON(); // save selection
+  editor.selectAll();
+  editor.focus();
+  document.execCommand('copy');
+  editor.selection.fromJSON(sel); // restore selection
+});
+
+$('#clear').on('click', function() {
+editor.setValue("");
+});
+
+
 
     const editorNode = document.querySelector('#editor');
     const outputNode = document.querySelector('#console');
     const runNode = document.querySelector('#run');
-    const pythonNode = document.querySelector('#python');
+	const pythonNode = document.querySelector('#python');
     const downloadNode = document.querySelector('#download');
     const filenameNode = document.querySelector('#filename');
 
@@ -70,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     runNode.addEventListener('click', () => {
         run();
     });
+	
 
     downloadNode.addEventListener('click', () => {
         download();
@@ -77,3 +93,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     editor.focus();
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
