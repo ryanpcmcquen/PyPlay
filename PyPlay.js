@@ -87,11 +87,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     clipboardNode.addEventListener("click", () => {
-        var sel = editor.selection.toJSON();
+        const selection = editor.selection.toJSON();
         editor.selectAll();
         editor.focus();
         document.execCommand("copy");
-        editor.selection.fromJSON(sel);
+        editor.selection.fromJSON(selection);
     });
 
     clearNode.addEventListener("click", () => {
