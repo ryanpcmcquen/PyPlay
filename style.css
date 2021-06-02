@@ -72,3 +72,8 @@ input:focus {
 .green:hover {
     background-color: #48e68b;
 }
+
+.pink {
+    background-color: #e2aeb4;
+    box-shadow: 0px 5px 0px 0px #be5e6b;
+}
