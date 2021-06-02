@@ -3,25 +3,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const editor = ace.edit("editor");
     editor.session.setMode("ace/mode/python");
     ace.require("ace/ext/language_tools");
-    editor.setShowPrintMargin(false);
+
     editor.setOptions({
         enableBasicAutocompletion: true,
         enableLiveAutocompletion: true,
     });
 
-    const clipboardNode = document.querySelector("#clipboard");
-    clipboardNode.addEventListener("click", function () {
-        var sel = editor.selection.toJSON();
-        editor.selectAll();
-        editor.focus();
-        document.execCommand("copy");
-        editor.selection.fromJSON(sel);
-    });
-
-    const clearNode = document.querySelector("#clear");
-    clearNode.addEventListener("click", function () {
-        editor.setValue("");
-    });
+    if (window.location.search) {
+        const searchParams = new URLSearchParams(window.location.search);
+        if (searchParams.has("code")) {
+            editor.setValue(searchParams.get("code"));
+        }
+    }
 
     const editorNode = document.querySelector("#editor");
     const outputNode = document.querySelector("#console");
@@ -29,6 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const pythonNode = document.querySelector("#python");
     const downloadNode = document.querySelector("#download");
     const filenameNode = document.querySelector("#filename");
+
+    const clipboardNode = document.querySelector("#clipboard");
+    const clearNode = document.querySelector("#clear");
 
     editorNode.style.width = `${window.innerWidth / 1.05}px`;
     editorNode.style.height = `${window.innerHeight / 1.5}px`;
@@ -88,6 +84,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     downloadNode.addEventListener("click", () => {
         download();
+    });
+
+    clipboardNode.addEventListener("click", () => {
+        var sel = editor.selection.toJSON();
+        editor.selectAll();
+        editor.focus();
+        document.execCommand("copy");
+        editor.selection.fromJSON(sel);
+    });
+
+    clearNode.addEventListener("click", () => {
+        editor.setValue("");
     });
 
     editor.focus();
