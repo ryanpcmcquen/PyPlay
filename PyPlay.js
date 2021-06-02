@@ -1,8 +1,8 @@
 /* global ace, brython */
 document.addEventListener("DOMContentLoaded", () => {
+    ace.require("ace/ext/language_tools");
     const editor = ace.edit("editor");
     editor.session.setMode("ace/mode/python");
-    ace.require("ace/ext/language_tools");
 
     editor.setOptions({
         enableBasicAutocompletion: true,
