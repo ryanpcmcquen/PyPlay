@@ -9,15 +9,17 @@ document.addEventListener("DOMContentLoaded", () => {
         enableLiveAutocompletion: true,
     });
 
-    $("#clipboard").on("click", function () {
-        var sel = editor.selection.toJSON(); // save selection
+    const clipboardNode = document.querySelector("#clipboard");
+    clipboardNode.addEventListener("click", function () {
+        var sel = editor.selection.toJSON();
         editor.selectAll();
         editor.focus();
         document.execCommand("copy");
-        editor.selection.fromJSON(sel); // restore selection
+        editor.selection.fromJSON(sel);
     });
 
-    $("#clear").on("click", function () {
+    const clearNode = document.querySelector("#clear");
+    clearNode.addEventListener("click", function () {
         editor.setValue("");
     });
 
