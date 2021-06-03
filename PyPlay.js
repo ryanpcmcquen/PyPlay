@@ -89,11 +89,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     clipboardNode.addEventListener("click", () => {
-        const selection = editor.selection.toJSON();
         editor.selectAll();
         editor.focus();
         document.execCommand("copy");
-        editor.selection.fromJSON(selection);
     });
 
     clearNode.addEventListener("click", () => {
@@ -101,12 +99,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     generateNode.addEventListener("click", () => {
-        const link = encodeURI(
-            `${window.location.origin}${
-                window.location.pathname
-            }?code=${editor.getValue()}`
-        );
-        window.prompt("Press Ctrl/Cmd + C to copy.", link);
+        const link = `${window.location.origin}${
+            window.location.pathname
+        }?code=${encodeURIComponent(editor.getValue())}`;
+        const promptNode = window.prompt("Press Ctrl/Cmd + C to copy.", link);
+        console.log(promptNode);
+        promptNode.select();
     });
 
     editor.focus();
