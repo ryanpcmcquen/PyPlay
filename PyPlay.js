@@ -26,6 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const clipboardNode = document.querySelector("#clipboard");
     const clearNode = document.querySelector("#clear");
 
+    const generateNode = document.querySelector("#generate");
+
     editorNode.style.width = `${window.innerWidth / 1.05}px`;
     editorNode.style.height = `${window.innerHeight / 1.5}px`;
 
@@ -96,6 +98,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     clearNode.addEventListener("click", () => {
         editor.setValue("");
+    });
+
+    generateNode.addEventListener("click", () => {
+        const link = encodeURI(
+            `${window.location.origin}${
+                window.location.pathname
+            }?code=${editor.selection.toJSON()}`
+        );
+        window.prompt("Press Ctrl/Cmd + C to copy.", link);
     });
 
     editor.focus();
