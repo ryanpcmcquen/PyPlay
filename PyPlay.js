@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const link = encodeURI(
             `${window.location.origin}${
                 window.location.pathname
-            }?code=${editor.selection.toJSON()}`
+            }?code=${editor.getValue()}`
         );
         window.prompt("Press Ctrl/Cmd + C to copy.", link);
     });
