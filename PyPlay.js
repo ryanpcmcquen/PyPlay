@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ace.require("ace/ext/language_tools");
     const editor = ace.edit("editor");
     editor.session.setMode("ace/mode/python");
-	editor.setShowPrintMargin(false);
 
     editor.setOptions({
         enableBasicAutocompletion: true,
@@ -23,9 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const pythonNode = document.querySelector("#python");
     const downloadNode = document.querySelector("#download");
     const filenameNode = document.querySelector("#filename");
-	const clipboardNode = document.querySelector("#clipboard");
+    const clipboardNode = document.querySelector("#clipboard");
     const clearNode = document.querySelector("#clear");
-	const loadingNode = document.querySelector("#loading")
+    const loadingNode = document.querySelector("#loading");
 
     const generateNode = document.querySelector("#generate");
 
@@ -41,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const run = () => {
         pythonNode.innerHTML = `<script type="text/python">${editor.getValue()}</script>`;
         outputNode.innerHTML = "";
-        brython();
+        brython(10);
         window.console.log = (message) => {
             outputNode.innerHTML += `${message}<br>`;
         };
@@ -98,25 +97,25 @@ document.addEventListener("DOMContentLoaded", () => {
     clearNode.addEventListener("click", () => {
         editor.setValue("");
     });
-		
-	loadingNode.addEventListener("click", () => {
-		var input = document.createElement('input');
-		input.type = 'file';
 
-		input.onchange = e => { 
-			var file = e.target.files[0];
-			if (!file) return;
-			var modelist = ace.require("ace/ext/modelist")
-			var modeName = modelist.getModeForPath(file.name).mode
-			editor.session.setMode(modeName)
-			reader = new FileReader();
-			reader.onload = function() {
-				editor.session.setValue(reader.result)
-			}
-			reader.readAsText(file)
-		}
-		input.click();
-	});
+    loadingNode.addEventListener("click", () => {
+        var input = document.createElement("input");
+        input.type = "file";
+
+        input.onchange = (e) => {
+            var file = e.target.files[0];
+            if (!file) return;
+            var modelist = ace.require("ace/ext/modelist");
+            var modeName = modelist.getModeForPath(file.name).mode;
+            editor.session.setMode(modeName);
+            reader = new FileReader();
+            reader.onload = function () {
+                editor.session.setValue(reader.result);
+            };
+            reader.readAsText(file);
+        };
+        input.click();
+    });
 
     generateNode.addEventListener("click", () => {
         const link = `${window.location.origin}${
@@ -129,4 +128,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
     editor.focus();
 });
-
